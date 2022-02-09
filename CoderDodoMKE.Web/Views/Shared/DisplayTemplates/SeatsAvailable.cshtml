@@ -1,0 +1,11 @@
+﻿@model int
+
+@if(Model <= 0) {
+    <div class="label-danger">Sold Out</div>
+} else if(Model <= 5)
+{
+    <div class="label-warning">@Model</div>
+} else
+{
+    <div class="label-success">@Model</div>
+}

@@ -1,0 +1,35 @@
+﻿@using CoderDojoMKE.Models
+@model CoderDojoMKE.Web.Models.Data.Enrollment
+
+<tr>
+    <td>@Model.Enroller.Email</td>
+    <td>@Model.Enrollee.FirstName</td>
+    <td>@Model.Enrollee.LastName</td>
+    <td>
+        @if (Model.EnrollmentResolution == null)
+        {
+            <div class="btn-group">
+                <a href="/Registration/RegisterAttendee?enrollmentID=@Model.EnrollmentID" class="btn btn-success">Register <span class="glyphicon glyphicon-check"></span></a>
+                <a href="/Registration/RegisterCancellation?enrollmentID=@Model.EnrollmentID" class="btn btn-default">Cancel <span class="glyphicon glyphicon-remove-circle"></span></a>
+                <a href="/Registration/RegisterNoShow?enrollmentID=@Model.EnrollmentID" class="btn btn-danger">No Show <span class="glyphicon glyphicon-trash"></span></a>
+            </div>
+        }
+        else if(Model.EnrollmentResolution.ResolutionResult == ResolutionResultType.InAttendance)
+        {
+            <div class="label-success">Registered <span class="glyphicon glyphicon-check"></span></div>
+        }
+        else if (Model.EnrollmentResolution.ResolutionResult == ResolutionResultType.Canceled)
+        {
+            <div class="label-default">Canceled <span class="glyphicon glyphicon-remove-circle"></span></div>
+        }
+        else if (Model.EnrollmentResolution.ResolutionResult == ResolutionResultType.NoShowed)
+        {
+            <div class="label-danger">No Showed <span class="glyphicon glyphicon-trash"></span></div>
+        }
+        else
+        {
+            <div class="label-info">Unknown <span class="glyphicon glyphicon-question-sign"></span></div>
+        }
+    </td>
+</tr>
+

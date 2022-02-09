@@ -1,0 +1,9 @@
+﻿@model CoderDojoMKE.Web.Models.View.CreateNewNinjaViewModel
+
+@Html.LabelFor(model => model.NewNinjaFirstName)
+@Html.ValidationMessageFor(model => model.NewNinjaFirstName)
+@Html.TextBoxFor(model => model.NewNinjaFirstName, new { @class = "form-control" })
+
+@Html.LabelFor(model => model.NewNinjaLastName)
+@Html.ValidationMessageFor(model => model.NewNinjaLastName)
+@Html.TextBoxFor(model => model.NewNinjaLastName, new { @class = "form-control" })

@@ -1,0 +1,34 @@
+﻿@model CoderDojoMKE.Web.Models.View.EventRegistrationViewModel
+@{
+    ViewBag.Title = "Event Registration | Coder Dojo MKE";
+}
+
+<h2>EVENT REGISTRATION</h2>
+<div class="main-content">
+    <h4>@Model.EventName</h4>
+    <hr />    
+    
+    @Html.HiddenFor(model => model.EventID)
+    <table class="table" id="eventRegistrationTable">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @Html.DisplayFor(model => model.Enrollments)
+        </tbody>
+    </table>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#eventRegistrationTable').bootstrapTable({ search: true });
+        });
+    </script>
+}
+

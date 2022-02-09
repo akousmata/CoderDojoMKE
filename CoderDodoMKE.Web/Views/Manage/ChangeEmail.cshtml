@@ -1,0 +1,43 @@
+﻿@model CoderDojoMKE.Web.Models.View.ChangeEmailViewModel
+@{
+    ViewBag.Title = "Change Email | Coder Dojo MKE";
+}
+
+<h2>CHANGE EMAIL</h2>
+
+<div class="main-content">
+    @using (Html.BeginForm("ChangeEmail", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Change Email Form</h4>
+        @Html.ValidationSummary(false, "Please fix the following errors")
+        <p>
+            Please note that your e-mail is used to log in as well as for notifications and updates that
+            are delivered from Coder Dojo MKE.  As a result, you will be asked to re-verify your email address
+            by logging into your new email account and following the instructions in the verificaiton email.
+        </p>
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+        <hr />
+        <div class="form-field-group">
+            <label for="CurrentEmail">Current Email</label>
+            @Html.DisplayTextFor(m => m.CurrentEmail)
+            @Html.HiddenFor(m => m.CurrentEmail)
+        </div>
+
+        <div class="form-field-group">
+            <label for="NewEmail">New Email <span class="asterisk">*</span></label>
+            @Html.TextBoxFor(m => m.NewEmail)
+        </div>        
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Change Email" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

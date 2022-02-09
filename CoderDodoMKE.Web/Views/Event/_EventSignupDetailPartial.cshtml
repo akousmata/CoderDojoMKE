@@ -1,0 +1,114 @@
+﻿@model CoderDojoMKE.Web.Models.View.EventSignupViewModel
+
+@Html.AntiForgeryToken()
+<div class="main-content col-md-12 cdm-event">
+    <div class="col-md-2">
+        <img class="event-logo" src="@Url.Content(String.Format("~/Content/Images/{0}", Model.ImageName))" />
+    </div>
+    <div class="col-md-6">
+        <h4>@Html.DisplayFor(model => model.EventName): @Html.DisplayFor(model => model.EventDateTime, "EventDateTime") - @Html.DisplayFor(model => model.EventEndDateTime, "EventEndTime")</h4>
+        
+        @Html.HiddenFor(model => model.EventID)
+        @Html.HiddenFor(model => model.IsFirstSignup)
+
+        @Html.LabelFor(model => model.NumberOfEnrollees)
+        @Html.ValidationMessageFor(model => model.NumberOfEnrollees)
+        @Html.DropDownListFor(model => model.NumberOfEnrollees, Model.GetNumberOfEnrolleesList(), new { @class = "form-control number-ddl", onchange = "this.form.action = '/Event/ChangeAttendees'; this.form.submit();" })
+
+        @if (Model.IsFirstSignup && Model.NumberOfEnrollees > 0)
+        {
+            @* First first time signing up, just display the first/last name in a table format *@
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <td>
+                            <label>First Name</label>
+                        </td>
+                        <td>
+                            <label>Last Name</label>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @Html.EditorFor(model => model.Enrollees)
+                </tbody>
+            </table>
+        }
+        else
+        {
+            @* Display a list of dropdowns based on previous enrollees otherwise a table for new ones *@
+        int seatNumber = 1;
+        for (int i = 0; i < Model.SelectedEnrollees.Count; i++)
+        {
+            <label>Seat @seatNumber</label>
+                @Html.DropDownListFor(model => model.SelectedEnrollees[i], Model.SelectableEnrollees, new { @class = "form-control name-ddl ninja-enrollee-list" })
+                seatNumber++;
+            }
+
+            for (int i = 0; i < Model.Enrollees.Count(); i++)
+            {
+                <div class="ninja-seat-overflow">
+                    <label class="seat-number">Seat @seatNumber</label>
+
+                    <div class="col-md-6">
+                        <label>First Name</label>
+                        @Html.ValidationMessageFor(model => model.Enrollees[i].FirstName)
+                        @Html.TextBoxFor(model => model.Enrollees[i].FirstName, new { @class = "form-control bottom-spacer" })
+                        @Html.HiddenFor(model => model.Enrollees[i].PersonID)
+                        @Html.HiddenFor(model => model.Enrollees[i].EnrollerID)
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Last Name</label>
+                        @Html.ValidationMessageFor(model => model.Enrollees[i].LastName)
+                        @Html.TextBoxFor(model => model.Enrollees[i].LastName, new { @class = "form-control bottom-spacer" })
+                    </div>
+                </div>
+
+                seatNumber++;
+            }
+        }
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+        
+        <dl>
+            @*<dt>@Html.DisplayNameFor(model => model.SeatsAvailable)</dt>
+            <dd>@Html.DisplayFor(model => model.SeatsAvailable, "SeatsAvailable")</dd>*@
+            <dt>@Html.DisplayNameFor(model => model.SignUpEnd)</dt>
+            <dd>@Html.DisplayFor(model => model.SignUpEnd)</dd>
+            <dt>@Html.DisplayNameFor(model => model.RegistrationStart)</dt>
+            <dd>@Html.DisplayFor(model => model.RegistrationStart, "RegistrationTime")</dd>
+            <dt>@Html.DisplayNameFor(model => model.EventDescription)</dt>
+            <dd>@Html.DisplayFor(model => model.EventDescription)</dd>
+            <dt>@Html.DisplayNameFor(model => model.EventInstructions)</dt>
+            <dd>@Html.DisplayFor(model => model.EventInstructions)</dd>
+        </dl>
+
+            
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Signing up
+            </div>
+            <div class="panel-body">
+                <p>
+                    Select the number of ninjas you wish to sign up and provide their names if prompted.  Please note that you are
+                    responsible for all ninjas attending the session you are signing up for.  
+                </p>
+                <p>
+                    We limit a single sign up to 5 ninjas, if you need to sign up more, please @Html.ActionLink("contact us", "Contact", "Home").
+                </p>
+                <p>
+                    If you have signed up for a previous event, the form may be pre-populated for you.  You can change this during the
+                    signup process, but once submitted, enrollments may only be canceled (i.e. you cannot change the name on the enrollment).                      
+                </p>                
+                <p>
+                    If you need to cancel any enrollments, you can do so through the account management area by clicking on your username in the
+                    navigation menu above, or simply by @Html.ActionLink("clicking here", "Index", "Manage").
+                </p>
+            </div>
+        </div>
+    </div>
+</div>    

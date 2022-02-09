@@ -1,0 +1,21 @@
+﻿@model CoderDojoMKE.Web.Models.View.EventViewModel
+
+@using (Html.BeginForm("Event", "Registration", new { id = Model.EventID }, FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    <div class="main-content col-md-12 cdm-event">
+        <div class="col-md-2">
+            <img class="event-logo" src="@Url.Content(String.Format("~/Content/Images/{0}", Model.ImageName))" />
+        </div>
+        <div class="col-md-8">
+            <h4>@Html.DisplayFor(model => model.EventName) - @Html.DisplayFor(model => model.EventDateTime, "EventDateTime")</h4>
+            <dl>                
+                <dt>@Html.DisplayNameFor(model => model.SignUpEnd)</dt>
+                <dd>@Html.DisplayFor(model => model.SignUpEnd)</dd>
+                <dt>@Html.DisplayNameFor(model => model.RegistrationStart)</dt>
+                <dd>@Html.DisplayFor(model => model.RegistrationStart, "RegistrationTime")</dd>
+            </dl>            
+            <input type="submit" value="Register Attendees" class="btn btn-primary" />
+        </div>
+    </div>    
+}

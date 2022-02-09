@@ -1,0 +1,65 @@
+﻿@model CoderDojoMKE.Web.Models.View.IndexViewModel
+@{
+    ViewBag.Title = "Manage Account | Coder Dojo MKE";
+}
+
+<h2>MANAGE ACCOUNT</h2>
+
+<div class="main-content">
+    <p class="text-success">@ViewBag.StatusMessage</p>
+
+    <h4 class="pull-left">Change your account settings</h4>
+    @if(User.IsInRole("GlobalAdmin") || User.IsInRole("Mentor"))
+    {
+        @Html.ActionLink("Registrations", "Index", "Registration", null, new { @class="btn btn-primary pull-right"})
+    }
+    <div class="clearfix"></div>
+    <hr />
+
+    <div class="form-field-group">
+        <label>Password</label>
+        [
+        @if (Model.HasPassword)
+            {
+            @Html.ActionLink("Change your password", "ChangePassword")
+        }
+        else
+        {
+            @Html.ActionLink("Create", "SetPassword")
+        }
+        ]
+    </div>
+    <div class="form-field-group">
+        <label>Email</label>
+        [ @Model.Email ] <br />
+        [ @Html.ActionLink("Change email address", "ChangeEmail") ]
+    </div>
+
+    <h4>Enrollments</h4>
+    <hr />
+
+    <div class="manage-enrollment-list">
+        <ul>
+            @foreach (var enrollment in Model.Enrollments)
+            {
+                <li id="@enrollment.EnrollmentID" class="enrollment-list-item @enrollment.EnrollmentID">
+                    <ul>
+                        <li><label>@enrollment.Event.EventName</label></li>
+                        <li>@enrollment.Event.EventDateTime.ToShortDateString()</li>
+                        <li>@enrollment.Enrollee.FullName</li>                                         
+                        <li class="enrollment-cancel-button">
+                            @if (enrollment.Event.EventDateTime > DateTime.Now.AddHours(-24))
+                            {   
+                                <a href="#" class="btn btn-default cancel-enrollment">
+                                    Cancel <span class="glyphicon glyphicon-remove-circle"></span>
+                                </a>
+                            }
+                        </li>                        
+                    </ul>
+                </li>
+                <li class="enrollment-list-item-divider @enrollment.EnrollmentID"><hr /></li>
+            }
+        </ul>
+    </div>
+</div>
+

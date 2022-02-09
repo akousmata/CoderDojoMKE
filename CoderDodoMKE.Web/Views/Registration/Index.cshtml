@@ -1,0 +1,21 @@
+﻿@model IEnumerable<CoderDojoMKE.Web.Models.View.EventViewModel>
+@{
+    ViewBag.Title = "Registration | Coder Dojo MKE";
+}
+
+<h2>REGISTRATION</h2>
+
+@if(Model.Any())
+{
+    @Html.DisplayFor(model => model)
+}
+else
+{
+    <div class="main-content">
+        <p class="lead">
+            No events available for registration
+        </p>
+    </div>
+}
+
+

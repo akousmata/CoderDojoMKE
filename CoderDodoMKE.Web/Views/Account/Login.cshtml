@@ -1,0 +1,73 @@
+﻿@model CoderDojoMKE.Web.Models.View.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in | CoderDojo MKE";
+}
+
+<h2>LOG IN</h2>
+<div class="main-content col-md-12">
+    
+    <div class="col-md-6">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(false, "Please fix the following errors")
+            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+
+            <div class="form-field-group">
+                <label for="Email">Email <span class="asterisk">*</span></label>
+                @Html.TextBoxFor(model => model.Email)
+            </div>
+
+            <div class="form-field-group">
+                <label for="Password">Password <span class="asterisk">*</span></label>
+                @Html.PasswordFor(model => model.Password)
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Log in &raquo;" class="btn btn-primary" />
+                </div>
+            </div>            
+        }
+    </div>
+
+    <div class="col-md-6">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Don't have an account?
+            </div>
+            <div class="panel-body">
+                @Html.ActionLink("Register as a new user »", "Register", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Forget your password?
+            </div>
+            <div class="panel-body">
+                @Html.ActionLink("Reset it here »", "ForgotPassword", "Account", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+    
+        
+    @*<div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>*@
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

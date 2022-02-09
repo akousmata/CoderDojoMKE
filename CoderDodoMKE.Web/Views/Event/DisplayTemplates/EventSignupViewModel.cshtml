@@ -1,0 +1,15 @@
+﻿@using CoderDojoMKE.Web.Models.View
+@model CoderDojoMKE.Web.Models.View.EventSignupViewModel
+
+@using (Html.BeginForm("Enroll", "Event", new { id = Model.EventID }, FormMethod.Post))
+{
+    @Html.Partial("_EventSignupDetailPartial", Model)
+}
+
+<!-- Modal -->
+@using (Ajax.BeginForm("CreateNewNinja", "Event", new AjaxOptions {HttpMethod = "POST", UpdateTargetId = "createNinjaInputsContainer", OnSuccess = "EventSignup.handleNinjaCreation" }))
+{
+    @Html.Partial("_CreateNewNinjaModal", new CreateNewNinjaViewModel())
+}
+
+

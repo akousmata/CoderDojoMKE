@@ -1,0 +1,351 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url('Images/body-bg.jpg');
+    background-size: 500px 500px;
+    background-repeat: repeat;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.body-content h2 {
+    margin-top: 15px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+textarea.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.main-content {
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 30px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+.member-photo {
+    border: 3px solid black;
+    border-radius: 3px;
+    width: 260px;
+    height: 300px;
+    float: left;    
+}
+
+img.member-photo {
+    text-align: center;
+}
+
+.member-detail {
+    margin-left: 20px;    
+    float: left;
+    width: 50%;
+}
+
+.member-detail > h3 {
+    margin-top: 0px;
+}
+
+.member {
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+#contact-us-form {
+    display: block;
+    position: relative;
+}
+
+.form-field-group {
+    position: relative;
+    clear: left;
+    padding-bottom: 3%;
+    min-height: 50px;
+    width: 50%;
+}
+
+.form-field-group label {
+    display: block;
+    margin-bottom: 3px;    
+}
+
+.asterisk {
+    color: #c60;
+    font-size: 200%;
+}
+
+.form-field-group .asterisk {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+}
+
+.form-field-group input, .form-field-group textarea {
+     display: block;
+     padding: 8px 0;
+     width: 100%;
+     text-indent: 2%;
+     font-size: 1em;
+}
+
+.indicates-required {    
+    text-align: left;
+    font-size: 11px;
+    margin-bottom: 10px;
+}
+
+.indicates-required .asterisk {
+    vertical-align: bottom;
+    line-height: 4px;
+}
+
+.light-bot-game > iframe {
+    display: block;
+    margin: 0 auto;
+}
+
+.future-event-list {
+    list-style-type: none;
+}
+
+.future-event-list > li {
+    margin-bottom: 10px;
+}
+
+.availability-info, .ticket-type-description {
+    margin-bottom: 0px;
+    margin-left: 20px;
+}
+
+.number-available, .event-canceled, .ticket-type-name {
+    font-weight: bold;
+}
+
+.number-ddl {
+    max-width: 80px;
+    margin-bottom: 10px;
+}
+
+.name-ddl {
+    max-width: 200px;
+    margin-bottom: 4px;
+}
+
+.bottom-spacer {
+    margin-bottom: 10px;
+}
+
+/* Custom Bootstrap overrides BEGIN */
+.navbar-inverse {
+  background-color: #bbb;
+  border-color: #ccc;  
+}
+
+.navbar-inverse .navbar-brand {  
+  text-indent: -9999px;
+  background: #bbb url('Images/coderdojologomke.png') no-repeat top left;  
+  width: 240px;  
+}
+
+.navbar-inverse .navbar-nav > li > a {  
+  font-size: 1.25em;
+  color: #231F20;
+}
+
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+    color: #999999;
+    background-color: #bbbbbb
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  /*color: #B96D2A;
+  background-color: transparent;
+  text-decoration: underline;*/
+  color: #fff;
+  background-color: #B96D2A;
+  text-decoration: underline;
+}
+
+.navbar-inverse .navbar-collapse,
+.navbar-inverse .navbar-form {
+  border-color: #101010;
+  background-color: #fff;
+}
+
+.jumbotron { 
+  background-color: #fff;
+}
+
+.jumbotron h2 {  
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+}
+
+.checkbox input[type="checkbox"] {
+    margin-left: 0px;
+}
+
+.label-success,
+.label-warning,
+.label-danger,
+.label-default {
+    border-radius: 3px;
+    display: inline-block;
+    min-width: 60px;
+    text-align: center;
+    margin: 4px 0 4px 0;
+    padding: 4px 8px 4px 8px;    
+}
+
+.label-success {
+    border: 2px solid #006400;
+}
+
+.label-warning {
+    background-color: #ffff70;
+    border: 2px solid #cdcd00;
+}
+
+.label-danger {
+    border: 2px solid #8b2500;
+}
+
+.label-default {
+    border: 2px solid #101010;
+    background-color: #bbb
+}
+
+@media (min-width: 768px) {
+  .navbar-nav {    
+    background-color: #fff;
+  }
+  .navbar-right {
+      margin-right: 0px;
+  }
+  .navbar-inverse .navbar-nav > li > a {
+        font-size: 1em;
+  }
+
+  .navbar-inverse .navbar-brand {    
+    width: 50px;
+  }
+
+  .enrollment-list-item ul li {
+    display: inline;
+    width: 25%;
+    float: left;
+  }
+
+  .enrollment-list-item-divider {
+    clear: both;
+  }
+
+  .enrollment-cancel-button {
+    margin-top: -8px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 992px) {
+    .navbar-inverse .navbar-nav > li > a {
+        font-size: 1em;
+    }
+    .navbar-inverse .navbar-brand {    
+      width: 240px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar-inverse .navbar-nav > li > a {
+        font-size: 1.25em;
+    }
+}
+
+
+/* Custom Bootstrap overrides END */
+
+/* Event signups */
+.event-logo {
+    height: 100px;
+    width: 140px;        
+}
+
+.cdm-event {
+    border: 2px solid black;
+    display: block;
+}
+
+.cdm-event dl dt {
+    margin-bottom: 2px;
+}
+
+.cdm-event dl dd {
+    margin-bottom: 5px;
+}
+
+.col-md-4 > .enrollee-signup-label {
+    padding-left: 0px !important;
+}
+
+.enrollee-signup-field {
+    margin-bottom: 5px;
+}
+
+label.seat-number {
+    display: block;
+}
+
+.new-enrollee-container {
+    margin-bottom: 10px;
+}
+/* Event signups */
+
+/* Event resolutions */
+.manage-enrollment-list ul, 
+.enrollment-list-item ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+/* Event resolutions */
+
+

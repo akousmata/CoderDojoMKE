@@ -1,0 +1,24 @@
+﻿@model CoderDojoMKE.Web.Models.View.EnrollmentSuccessViewModel
+
+<h2>ENROLLMENT SUCCESS</h2>
+
+<div class="main-content">
+    <h4>Thank you for enrolling!</h4>
+    <hr />
+    <p>
+        You have successfully signed up <b>@Model.NumberOfNinjas ninjas</b> for the event <b>@Model.EventName</b> held on <b>@Model.EventDateTime</b>.
+    </p>
+    <p>
+        An e-mail has been sent to the e-mail address associated with your account.
+    </p>
+
+    <p>
+        <iframe height="300"
+                frameborder="0" style="border:0; width: 80%;"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCUsBLXZXkF1sx_MDFR-Ab-koZsCdSC2fI&q=Northwoods+Software+Development,+Inc." allowfullscreen></iframe>        
+    </p>
+
+    <p>
+        @Html.ActionLink("« Back to events", "Index", "Signup")
+    </p>
+</div>

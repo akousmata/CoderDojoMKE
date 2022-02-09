@@ -1,0 +1,15 @@
+﻿@model CoderDojoMKE.Web.Models.View.EventEnrolleeViewModel
+
+<tr>    
+    <td>
+        @Html.ValidationMessageFor(model => model.FirstName)                
+        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control" })        
+        @Html.HiddenFor(model => model.PersonID)
+        @Html.HiddenFor(model => model.EnrollerID)
+    </td>
+    <td>
+        @Html.ValidationMessageFor(model => model.LastName)        
+        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })        
+    </td>
+</tr>
+

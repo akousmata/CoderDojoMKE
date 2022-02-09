@@ -1,0 +1,37 @@
+﻿@model CoderDojoMKE.Web.Models.View.ContactUsInformationViewModel
+
+@{
+    ViewBag.Title = "Contact | CoderDojo MKE";
+}
+<h2>CONTACT</h2>
+
+<div class="main-content">
+    <label>Address</label>
+    <address>
+        1572 E Capitol Drive<br />
+        Shorewood, Wisconsin 53211
+    </address>
+    
+    @using (Html.BeginForm("Submit", "ContactUs", FormMethod.Post, new { id = "contact-us-form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(false, "Please fix the following errors")
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+        <div class="form-field-group">
+            <label for="ContactUsName">Name <span class="asterisk">*</span></label>
+            @Html.TextBoxFor(model => model.ContactUsName)
+        </div>
+        <div class="form-field-group">
+            <label for="ContactUsEmail">Email <span class="asterisk">*</span></label>
+            @Html.TextBoxFor(model => model.ContactUsEmail)
+        </div>        
+        <div class="form-field-group">
+            <label for="ContactUsMessage">Message <span class="asterisk">*</span></label>
+            @Html.TextAreaFor(model => model.ContactUsMessage)
+        </div>
+        <a href="#" id="contact-us-submit" class="btn btn-primary btn-large">Submit</a>
+    }
+
+    
+</div>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<CoderDojoMKE.Web.Models.View.EventViewModel>
+@{
+    ViewBag.Title = "Signup | Coder Dojo MKE";
+}
+
+<h2>SIGN UP</h2>
+
+<div class="main-content">    
+    <p class="lead">
+        All sessions are currently held at the following address:<br />
+        <address class="lead">
+            Northwoods Software<br />
+            1572 E Capitol Dr.<br />
+            Shorewood, WI 53211<br />
+        </address>       
+    </p>
+    <p class="lead">
+        Each session listed below contains information about what will be taught during the session, 
+        the date and time of the session, and the number of seats available.  We encourage students to
+        bring their own computers as there are only 10 available.  Instructions for what is needed in order
+        to prepare for the session is available once you click on a specific session to sign up.        
+    </p>    
+    <p>
+        If we have more students than computers, we will assign students in pairs to work together.  Paired Programming is 
+        a way for Coder Dojo ninjas to get to know one another and have a shared experience while learning to code.  This
+        technique is used in many software development settings in the real world in order to convey knowledge and techniques 
+        between developers.
+    </p>        
+</div>
+
+<div class="event-listing">
+    @Html.DisplayFor(model => model)
+</div>
